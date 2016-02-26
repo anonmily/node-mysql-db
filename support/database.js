@@ -1,6 +1,6 @@
 // Dependencies
 var _			=	require('lodash'),
-	db 			= 	require('./db-pool'),
+	db 			= 	require('./db-pool'), // the actual pooled connection
 	qutil 		=	require('./querybuilder')(db),
 	is 			= require('simply-is'),
     log 		= require('log-easily');
@@ -13,8 +13,8 @@ if( env['NODE_ENV'] === 'test'){
 }
 log.info('Chosen Database: ' + DATABASE);
 
-// Export
-module.exports = {
+// Main object
+var DatabaseWrapper = {
 	select: function(queryobj,callback){
 
 		var q = _.clone(queryobj);
@@ -55,7 +55,7 @@ module.exports = {
 		var fields = queryobj.fields;
 		var database = queryobj.database ? queryobj.database : DATABASE;
 
-		// for all fields/values, create the update values
+		// Construct the FIELD=VALUE part of the query
 		_.forIn(fields,function(value,column){
 			// for functions (e.g. UTC_DATETIME()) don't put quotes
 			if(String(value).indexOf('()') >= 0){
@@ -64,18 +64,24 @@ module.exports = {
 				values.push(qutil.escapeId(column) + '=\"' + qutil.escapeValue(value)+'\"');
 			}
 		});
+
+		// Combine to make the final query
 		var query = "UPDATE " + queryobj.table + " SET ";
 		query += values.join(',') + " ";
 		if(queryobj.criteria){
 			query += qutil.set.where(queryobj.criteria);
 		}
+
+		// Run it
 		qutil.run(database, query, callback);
 	},
 	insert: function(queryobj,callback){
+		// Set variables
 		var database = queryobj.database ? queryobj.database : DATABASE;
 		var values = [];
 		var fields = queryobj.fields;
 
+		// Construct the FIELD=VALUE part of the query
 		_.forIn(fields, function(value,column){
 			// for functions (e.g. UTC_DATETIME()) don't put quotes
 			if(String(value).indexOf('()') >= 0){
@@ -85,14 +91,20 @@ module.exports = {
 			}
 		});
 
+		// Combine to make the final query
 		var query = "INSERT INTO " + queryobj.table + " SET ";
 		query += values.join(',');
+
+		// Run it
 		qutil.run(database, query, callback);
 	},
 	delete: function(queryobj,callback){
+		// Set variables
 		var database = queryobj.database ? queryobj.database : DATABASE;
 		var query = "DELETE FROM " + queryobj.table + " ";
+
 		query += qutil.set.where(queryobj.criteria);
+		
 		qutil.run(database, query, callback);
 	},
 	truncate: function(queryobj, callback){
@@ -100,3 +112,6 @@ module.exports = {
 		qutil.run(database, "TRUNCATE " + queryobj.table, callback);
 	}
 };
+
+// Export
+module.exports = DatabaseWrapper;

@@ -30,7 +30,10 @@ If NODE_ENV is "test", then the following environmental variables will be used:
 * DB_TEST_DATABASE
 
 ---
-## Examples
+## Usage
+
+To use this package to connect to your database you must first:
+* 
 
 ### Create a new CRUD model
 	var Database = require('mysql-db');
@@ -51,10 +54,13 @@ If NODE_ENV is "test", then the following environmental variables will be used:
 		}
 	});
 
+	// default values that will be added to every create/new row inserted
 	pages.setCreateDefaults({
 		created: "UTC_TIMESTAMP()",
 		modified: "UTC_TIMESTAMP()"
 	});
+
+	// default values that will be added to every row update
 	pages.setUpdateDefaults({
 		modified: "UTC_TIMESTAMP()"
 	});
@@ -63,6 +69,7 @@ If NODE_ENV is "test", then the following environmental variables will be used:
 
 ## Use the new model to get data
 	pages.get({},function(err,result){
+		// Do stuff
 		console.error(err);
 		console.log(result);
 	});
@@ -75,11 +82,17 @@ If NODE_ENV is "test", then the following environmental variables will be used:
 		criteria: {
 			id: 1
 		}
+	},function(err,result){
+		// get response
 	});
+
+_Note_: In this example, the *modified* field is automatically set to UTC_TIMESTAMP() since we previously defined the default when creating the pages model (by using pages.setUpdateDefaults)
 
 ## Delete an entry
 	pages.delete({
 		id: 3
+	}, function(err,result){
+		// get response
 	});
 
 ## Insert/create an entry
@@ -87,14 +100,16 @@ If NODE_ENV is "test", then the following environmental variables will be used:
 		id: 25,
 		title: 'hello world',
 		content: 'it is a wonderful day!'
+	},function(err,result){
+		// get response
 	});
 
----
-## Basics
+_Note_: In this example, the created and modified are automatically set since we previously set them with pages.setCreateDefaults when defining the model
 
 ---
 ## TODO
 * switch to promises
+* add tests
 
 ---
 ## Changelog

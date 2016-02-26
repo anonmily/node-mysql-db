@@ -23,12 +23,10 @@ pages.setCreateDefaults({
 pages.setUpdateDefaults({
 	modified: "UTC_TIMESTAMP()"
 });
-/*
 pages.get({},function(err,result){
 	console.error(err);
 	console.log(result);
 });
-*/
 /*
 pages.update({
 	edit: {
