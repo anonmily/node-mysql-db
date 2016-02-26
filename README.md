@@ -11,6 +11,24 @@ An expressive type testing utility library.
 
 ## Usage
 
+### Environmental Variables
+
+Setup
+* NODE_ENV - will use test environmental variables if NODE_ENV=test
+* SHOW_DEBUG - if true, will show log messages
+
+* DB_HOST
+* DB_USER
+* DB_PASSWORD
+* DB_DATABASE
+
+If NODE_ENV is "test", then the following environmental variables will be used:
+
+* DB_TEST_HOST
+* DB_TEST_USER
+* DB_TEST_PASSWORD
+* DB_TEST_DATABASE
+
 ---
 ## Examples
 
@@ -47,6 +65,28 @@ An expressive type testing utility library.
 	pages.get({},function(err,result){
 		console.error(err);
 		console.log(result);
+	});
+
+## Edit/update fields in the database
+	pages.update({
+		edit: {
+			title: 'hi'
+		},
+		criteria: {
+			id: 1
+		}
+	});
+
+## Delete an entry
+	pages.delete({
+		id: 3
+	});
+
+## Insert/create an entry
+	pages.create({
+		id: 25,
+		title: 'hello world',
+		content: 'it is a wonderful day!'
 	});
 
 ---

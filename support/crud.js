@@ -54,10 +54,18 @@ var CRUD_Model = function(config){
 	this.get = this.read;
 
 	this.update = function(obj,callback){
+		/* Expects an obj with:
+		   - edit
+		   - criteria: field that it will affect
+		  
+		   The table and the database come from what was set in the schema.
+		   
+		 */
+
 		obj.edit = _.merge(obj.edit, this.defaults.update.edit);
 		obj.criteria = _.merge(obj.criteria, this.defaults.update.criteria);
 		var that = this;
-		database.edit({
+		database.update({
 			fields: obj.edit,
 			table: that.schema.from,
 			database: that.schema.database,

@@ -98,8 +98,5 @@ module.exports = {
 	truncate: function(queryobj, callback){
 		var database = queryobj.database ? queryobj.database : DATABASE;
 		qutil.run(database, "TRUNCATE " + queryobj.table, callback);
-	},
-	get: this.select,
-	edit: this.update,
-	new: this.insert
+	}
 };
