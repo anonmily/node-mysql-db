@@ -1,6 +1,6 @@
 MySQL Database Wrapper
 ====================
-![Simply Is Dependency badge](https://david-dm.org/anonmily/mysql-db.svg)
+![Simply Is Dependency badge](https://david-dm.org/anonmily/node-mysql-db.svg)
 
 An expressive type testing utility library.
 
