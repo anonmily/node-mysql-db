@@ -1,0 +1,36 @@
+{
+  "name": "mysql-db",
+  "version": "0.0.0",
+  "description": "MySQL database modeling with built in CRUD. Just set the schema and get up and running.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anonmily/mysql-model"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter nyan test"
+  },
+  "keywords": [
+    "type",
+    "utility",
+    "util",
+    "boolean",
+    "typing",
+    "type testing",
+    "type check"
+  ],
+  "author": "Michelle Liu <michelle@michelleliu.io> (http://michelleliu.io)",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.5.2",
+    "bluebird": "^3.3.3",
+    "lodash": "^4.5.1",
+    "log-easily": "^1.0.1",
+    "mysql": "^2.7.0",
+    "simply-is": "^2.5.5"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
+  }
+}
