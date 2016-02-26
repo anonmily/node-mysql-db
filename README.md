@@ -9,11 +9,9 @@ An expressive type testing utility library.
 
 ---
 
-## Usage
+## Environmental Variables
 
-### Environmental Variables
-
-Setup
+Configuration
 * NODE_ENV - will use test environmental variables if NODE_ENV=test
 * SHOW_DEBUG - if true, will show log messages
 
@@ -33,7 +31,10 @@ If NODE_ENV is "test", then the following environmental variables will be used:
 ## Usage
 
 To use this package to connect to your database you must first:
-* 
+
+1. Setup the environmental variables to connect to your database
+2. Create a new model for every CRUD table/view (and set up any defaults for new rows and for updates)
+3. Use CRUD on your model as you please!
 
 ### Create a new CRUD model
 	var Database = require('mysql-db');
