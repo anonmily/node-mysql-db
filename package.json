@@ -1,6 +1,6 @@
 {
   "name": "mysql-db",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "MySQL database modeling with built in CRUD. Just set the schema and get up and running.",
   "repository": {
     "type": "git",

@@ -1,8 +1,9 @@
 MySQL Database Wrapper
 ====================
-![Simply Is Dependency badge](https://david-dm.org/anonmily/node-mysql-db.svg)
+![MYSQL-DB Dependency badge](https://david-dm.org/anonmily/node-mysql-db.svg)
 
-An expressive type testing utility library.
+MySQL database modeling with built in CRUD. Just create your models, then get up and running.
+
 
 ## Installation - Node
     npm install --save mysql-db
