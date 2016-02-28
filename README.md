@@ -43,14 +43,14 @@ To use this package to connect to your database you must first:
 	var pages = new Database.crud({
 		schema: {
 			select: [
-				'id',
-				'slug',
-				'title',
-				'category',
-				'content',
-				'created',
-				'modified',
-				'tags'
+					'id',
+					'slug',
+					'title',
+					'category',
+					'content',
+					'created',
+					'modified',
+					'tags'
 			],
 			from: 'pages'
 		}

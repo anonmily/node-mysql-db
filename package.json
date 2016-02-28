@@ -1,10 +1,10 @@
 {
   "name": "mysql-db",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "MySQL database modeling with built in CRUD. Just set the schema and get up and running.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anonmily/mysql-model"
+    "url": "https://github.com/anonmily/node-mysql-db"
   },
   "main": "index.js",
   "scripts": {
